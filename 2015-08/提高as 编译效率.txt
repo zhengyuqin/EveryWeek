@@ -1,0 +1,20 @@
+1.开启守护进程和并行编译
+ 在GRADLE_HOME这个环境变量对应的那个文件夹内，有个.gradle/gradle.properites文件，添加以下两句话：
+ org.gradle.daemon = true;
+ org.gradle.parallel = true;
+ 对于守护进程的使用：
+ http://gradle.org/docs/current/userguide/gradle_daemon.html#when_should_i_not_
+ 对于并行编译：
+ http://gradle.org/docs/current/userguide/multi_project_builds.html#sec:decouple
+
+2.设置堆内存，jvm的相关参数
+ org.gradle.jvmargs = -Xmx768m
+ org.gradle.java.home = /path/to/jvm
+
+3.该功能还在试验阶段，开启incremental dexing ,在app级别的build.gradle添加以下
+dexOptions{
+   incremental true
+}
+
+如果你还想了解更多gradle配置
+http://gradle.org/docs/current/userguide/userguide_single.html#sec:gradle_configurati
